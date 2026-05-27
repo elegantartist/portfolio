@@ -1,5 +1,38 @@
 # Hermes — Skills-Based Agent Runtime
 
+```mermaid
+flowchart TB
+    subgraph Runtime["Hermes Runtime"]
+        direction TB
+        Loop["Autonomous Loop<br/>(sustained, unattended)"]
+        Skills["Skill System<br/>60+ discrete, self-contained skills<br/>composed at runtime"]
+        Router{"Multi-Tier Model Routing<br/>match difficulty → capability → cost"}
+        Gate[["Fail-Safe Gates<br/>real-world actions gated"]]
+    end
+
+    subgraph Models["Models"]
+        Heavy["Top-tier reasoning"]
+        Cheap["Cheap / high-volume"]
+        Vision["NVIDIA NIM<br/>(screenshots / images)"]
+    end
+
+    subgraph macOS["Native macOS Integration"]
+        Cal["Calendar / Contacts<br/>(EventKit)"]
+        Mail["Email<br/>IMAP in · SES out"]
+    end
+
+    TCC{{"OS Permission Model<br/>(TCC denial suspected<br/>before agent logic)"}}
+
+    Loop --> Skills
+    Skills --> Router
+    Router --> Heavy
+    Router --> Cheap
+    Router --> Vision
+    Skills --> Gate
+    Gate --> macOS
+    macOS -.guarded by.- TCC
+```
+
 Hermes is an autonomous agent runtime organised around a skill system: rather than encoding capability in one monolithic prompt, behaviour is decomposed into 60+ discrete skills the agent composes at runtime. Each skill is a self-contained unit of capability with a clear contract, which means the runtime's competence grows by *adding* skills rather than by rewriting a central brain. This is the core architectural decision — it keeps each capability independently testable, keeps the agent's active context small (only the relevant skills are loaded for a given task), and makes the system's behaviour legible: what the agent *can* do is the enumerable set of skills it holds.
 
 Model routing is multi-tier. Hermes picks the model for each step by matching task difficulty to capability and cost — heavyweight reasoning goes to a top-tier model, routine or high-volume steps drop to cheaper, faster ones — so the runtime doesn't pay premium rates for trivial work. Vision tasks route to NVIDIA NIM-hosted models, giving the agent the ability to reason over screenshots and images as first-class input. The routing layer is what lets a single autonomous loop stay economical at scale while still reaching for the strongest model when the work genuinely needs it.

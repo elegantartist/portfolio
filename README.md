@@ -8,6 +8,8 @@ I direct AI to write production software in English. Five products are live, inc
 
 ## Architecture Deep-Dives
 
+Each deep-dive opens with a system diagram, then explains the decisions behind it.
+
 - **[Ro1: Multi-Agent AI Employee Platform](architecture/ro1.md)**
 - **[KGC: TGA Class I Clinical Decision Support](architecture/kgc.md)**
 - **[Hermes: Skills-Based Agent Runtime](architecture/hermes.md)**
