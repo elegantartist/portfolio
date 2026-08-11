@@ -1,12 +1,12 @@
-# KGC — TGA Registration (ARTG DA-2026-02415-1)
+# KGC — TGA Class I Submission (DA-2026-02415-1)
 
 ## Summary
 
-**KGC** is registered with Australia's Therapeutic Goods Administration (TGA) as a **Class I Software as a Medical Device (SaMD)**.
+**KGC** has been submitted to Australia's Therapeutic Goods Administration (TGA) as **Class I Software as a Medical Device (SaMD)** and is currently under review.
 
 | Field | Detail |
 |---|---|
-| **ARTG ID** | DA-2026-02415-1 |
+| **Application** | DA-2026-02415-1 / DV-2026-DA-07886-1 |
 | **Classification** | Class I SaMD |
 | **Intended use** | Clinical decision support |
 | **Sponsor** | Anthrocyt AI Pty Ltd (ABN 46 635 231 953) |
@@ -32,4 +32,4 @@ KGC is built to be audit-ready: an enumerable intended use, change-controlled cl
 
 ---
 
-*This document describes the regulatory status and design posture of a registered device. It contains no confidential, proprietary, or patient information.*
+*This document describes the regulatory status and design posture of a device under TGA review. It contains no confidential, proprietary, or patient information.*
